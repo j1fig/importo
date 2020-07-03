@@ -23,7 +23,7 @@ Usage
 
 ```
 $ importo datetime
-cum	    self    import
+cum     self    import
 24219   957     runpy
 13814   2181    contextlib
 11998   2051    site
@@ -45,7 +45,7 @@ pipe into other unix commands.
 For example
 ```
 $ importo datetime -d 1 -m encodings | head
-cum	    self    import
+cum     self    import
 2312    1068    encodings
 649     649     encodings.aliases
 400     400     encodings.latin_1
@@ -58,7 +58,7 @@ you can specify the number of iterations the profiler goes through.
 
 ```
 $ importo datetime -i 400 -d 1 -m encodings
-cum	    self    import
+cum     self    import
 2071    899     encodings
 530     530     encodings.aliases
 349     349     encodings.latin_1
