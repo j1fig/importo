@@ -1,0 +1,10 @@
+*.pyc
+
+build/
+dist/
+
+.python-version
+.tox/
+.venv/
+
+secret.sh

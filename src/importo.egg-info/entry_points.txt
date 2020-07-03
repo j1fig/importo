@@ -1,0 +1,3 @@
+[console_scripts]
+importo = importo.__main__:entrypoint
+

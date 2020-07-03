@@ -1,0 +1,32 @@
+#!/usr/bin/env python3
+import argparse
+import fileinput
+
+
+VERSION_PREFIX = 'version = '
+VERSION_FILE = 'setup.cfg'
+TYPE_INDEX = {
+    'fix': 2,
+    'minor': 1,
+    'major': 0,
+}
+
+
+def _bump(args):
+    with(fileinput.input(files=(VERSION_FILE,), inplace=True)) as f:
+        for l in f:
+            if l.startswith(VERSION_PREFIX):
+                version = l.strip(VERSION_PREFIX).rstrip().split('.')
+                index = TYPE_INDEX[args.type]
+                version[index] = str(int(version[index]) + 1)
+                for i in range(index + 1, 3):
+                    version[i] = '0'
+                l = VERSION_PREFIX + '.'.join(version) + '\n'
+            print(l, end='')  # lines already contain newline char.
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("type", help="semantic version bump type (major/minor/fix).")
+    args = parser.parse_args()
+    _bump(args)
