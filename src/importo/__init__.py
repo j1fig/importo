@@ -19,13 +19,17 @@ def parse_args(argv):
 
     aparser = argparse.ArgumentParser(description=__doc__)
     aparser.add_argument(
-        "module",
-        help="module to profile",
+        "module", help="module to profile",
     )
     aparser.add_argument("--depth", "-d", type=int, default=0, help="import tree depth")
     aparser.add_argument("--match", "-m", help="string to match module paths by")
-    aparser.add_argument("--iterations", "-i", type=int, default=1, help="number of times the profiler will run.")
-    aparser.add_argument("--parallelism", "-p", type=int, default=1, help="number of processes that are running the profiling")
+    aparser.add_argument(
+        "--iterations",
+        "-i",
+        type=int,
+        default=1,
+        help="number of times the profiler will run.",
+    )
     aparser.add_argument(
         "--sort",
         "-s",
@@ -49,7 +53,7 @@ def main(argv=None):
         argv = sys.argv
     args = parse_args(argv)
     try:
-        profiles = profiler.profile(args.module, args.parallelism)
+        profiles = profiler.profile(args.module, args.iterations)
         stats = parser.parse(profiles)
         parser.view(stats, args.depth, args.match, args.sort, args.quiet)
     except KeyboardInterrupt:

@@ -39,11 +39,12 @@ By default, `importo` will only stay at the root module level, and order by cumu
 
 You can sort by `cumulative` time (time the import and all its child imports took),
 `self` (time spent on just this particular import, child imports excluded) and module `name`.
-You can also choose the depth of import to go into, much like `du` and other tools do.
+You can also choose the depth of import to go into, much like `du` and other tools do as well as
+pipe into other unix commands.
 
 For example
 ```
-$ importo datetime -d 1 -m encodings
+$ importo datetime -d 1 -m encodings | head
 cum	    self    import
 2312    1068    encodings
 649     649     encodings.aliases
@@ -51,6 +52,21 @@ cum	    self    import
 273     273     encodings.utf_8
 ```
 > instead of `--match`/`-m` you could also just pipe to grep and it would probably work just fine.
+
+If you're looking for more statistical relevance in import times other than just a couple of runs,
+you can specify the number of iterations the profiler goes through.
+
+```
+$ importo datetime -i 400 -d 1 -m encodings
+cum	    self    import
+2071    899     encodings
+530     530     encodings.aliases
+349     349     encodings.latin_1
+332     332     encodings.cp437
+246     246     encodings.utf_8
+```
+
+For multiple iterations, the p99 values are used as it's probably the most useful.
 
 
 ### Other
@@ -65,7 +81,7 @@ About
 -----
 This tool was motivated by the fact that Python3.7 introduced a new feature to show cumulative module import times.
 
-An explanation and use case for this new feature can be found in this [blog entry](https://dev.to/methane/how-to-speed-up-python-application-startup-time-nkf) for a CPython core dev.
+An explanation and use case for this new feature can be found in this [blog entry](https://dev.to/methane/how-to-speed-up-python-application-startup-time-nkf) from a CPython core dev.
 
 This is a wrapper on top of `python -X importtime`.
 For small import trees I suggest using that tool first, it will probably suffice for your use case.
