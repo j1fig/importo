@@ -2,6 +2,7 @@
 """
 Python import time profiler.
 """
+
 from signal import signal, SIGPIPE, SIG_DFL
 import sys
 import argparse
@@ -15,11 +16,12 @@ signal(SIGPIPE, SIG_DFL)
 
 
 def parse_args(argv):
-    """ Parse and validate command line arguments """
+    """Parse and validate command line arguments"""
 
     aparser = argparse.ArgumentParser(description=__doc__)
     aparser.add_argument(
-        "module", help="module to profile",
+        "module",
+        help="module to profile",
     )
     aparser.add_argument("--depth", "-d", type=int, default=0, help="import tree depth")
     aparser.add_argument("--match", "-m", help="string to match module paths by")

@@ -13,7 +13,10 @@ def parse(profiles):
     stats = {}
     iterations = len(profiles)
     for stream in profiles:
-        for lineno, l, in enumerate(stream):
+        for (
+            lineno,
+            l,
+        ) in enumerate(stream):
             if lineno == 0:
                 continue
             if not l.startswith(PROFILE_PREFIX):
