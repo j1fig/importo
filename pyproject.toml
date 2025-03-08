@@ -1,3 +1,7 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
 [project]
 name = "importo"
 version = "0.2.0"
@@ -5,6 +9,15 @@ description = "Python import time profiler."
 readme = "README.md"
 requires-python = ">=3.9"
 dependencies = []
+authors = [
+  {name = "Joao Figueiredo"},
+]
+maintainers = [
+  {name = "Joao Figueiredo"},
+]
+
+[project.scripts]
+importo = "importo.__main__:entrypoint"
 
 [dependency-groups]
 dev = [
