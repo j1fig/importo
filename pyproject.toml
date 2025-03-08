@@ -1,0 +1,7 @@
+[project]
+name = "importo"
+version = "0.2.0"
+description = "Python import time profiler."
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = []

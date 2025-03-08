@@ -48,7 +48,6 @@ def parse_args(argv):
 
 
 def main(argv=None):
-    """ Run this program """
     if argv is None:
         argv = sys.argv
     args = parse_args(argv)

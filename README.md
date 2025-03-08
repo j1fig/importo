@@ -7,7 +7,7 @@ Python import time profiler.
 Installing
 ----------
 
-You must be running Python3.7+ for `importo` to work.
+`importo` requires Python 3.7 or higher to work.
 
 To install run
 
