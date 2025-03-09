@@ -59,10 +59,11 @@ wheels = [
 [[package]]
 name = "importo"
 version = "0.2.0"
-source = { virtual = "." }
+source = { editable = "." }
 
 [package.dev-dependencies]
 dev = [
+    { name = "importo" },
     { name = "pytest" },
     { name = "ruff" },
     { name = "tox" },
@@ -72,6 +73,7 @@ dev = [
 
 [package.metadata.requires-dev]
 dev = [
+    { name = "importo", editable = "." },
     { name = "pytest" },
     { name = "ruff" },
     { name = "tox" },

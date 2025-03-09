@@ -4,8 +4,7 @@ importo
 Python import time profiler.
 
 
-Installing
-----------
+## Installing
 
 `importo` requires Python 3.9 or higher to work.
 
@@ -15,11 +14,9 @@ To install run
 $ pip install importo
 ```
 
-Usage
------
+## Usage
 
 `importo` can profile any Python module currently installed in your enviroment (virtual or otherwise).
-
 
 ```
 $ importo datetime
@@ -68,6 +65,16 @@ cum     self    import
 
 For multiple iterations, the p99 values are used as it's probably the most useful.
 
+## Testing
+
+Tests are ran via `tox` to cover supported Python version.
+As such simply run
+
+```
+$ tox
+```
+
+from the root of the repository, whilst you have the required python versions accessible to `tox`.
 
 ### Other
 
@@ -77,8 +84,7 @@ For more information on the available options run
 $ importo -h
 ```
 
-About
------
+## About
 This tool was motivated by the fact that Python3.7 introduced a new feature to show cumulative module import times.
 
 An explanation and use case for this new feature can be found in this [blog entry](https://dev.to/methane/how-to-speed-up-python-application-startup-time-nkf) from a CPython core dev.
