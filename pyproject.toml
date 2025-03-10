@@ -4,11 +4,14 @@ build-backend = "hatchling.build"
 
 [project]
 name = "importo"
-version = "0.2.0"
+version = "0.3.0"
 description = "Python import time profiler."
 readme = "README.md"
 requires-python = ">=3.9"
-dependencies = []
+dependencies = [
+    "typer>=0.15.2",
+    "typing-extensions>=4.12.2",
+]
 authors = [
   {name = "Joao Figueiredo"},
 ]

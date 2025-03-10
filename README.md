@@ -68,13 +68,12 @@ For multiple iterations, the p99 values are used as it's probably the most usefu
 ## Testing
 
 Tests are ran via `tox` to cover supported Python version.
-As such simply run
+As such simply run `tox` from the root of the repository, while ensuring you have the required python versions accessible to `tox`.
 
+For quick feedback you can also parallelize envs via
 ```
-$ tox
+$ tox run-parallel
 ```
-
-from the root of the repository, whilst you have the required python versions accessible to `tox`.
 
 ### Other
 
@@ -97,3 +96,8 @@ For actual production applications for my job, I've found that this tools helps 
 
 **Notes**
 > I've noticed that the sum of `self` times doesn't fully add to the `cumulative` value of the root module. I don't yet know why this is the case.
+
+
+## Wishlist
+
+1. Move project direction to also support detection of import cycles.

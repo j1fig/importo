@@ -1,10 +1,10 @@
-import sys
+import typer
 
 from . import main
 
 
 def entrypoint():
-    sys.exit(main(sys.argv) or 0)
+    typer.run(main)
 
 
 if __name__ == "__main__":

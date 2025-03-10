@@ -4,10 +4,12 @@ Python import time profiler.
 """
 
 from signal import signal, SIGPIPE, SIG_DFL
-import sys
-import argparse
 
-from . import profiler, parser
+from typing_extensions import Annotated
+from rich import print
+import typer
+
+from . import fs, profiler, parser
 
 
 # see https://stackoverflow.com/a/30091579
@@ -49,17 +51,5 @@ def parse_args(argv):
     return args
 
 
-def main(argv=None):
-    if argv is None:
-        argv = sys.argv
-    args = parse_args(argv)
-    try:
-        profiles = profiler.profile(args.module, args.iterations)
-        stats = parser.parse(profiles)
-        parser.view(stats, args.depth, args.match, args.sort, args.quiet)
-    except KeyboardInterrupt:
-        sys.exit(-1)
-
-
-if __name__ == "__main__":
-    sys.exit(main(sys.argv) or 0)
+def main(path: Annotated[str, typer.Argument()] = ".", depth: int = 0, iterations: int = 1, sort: str = "cumulative", quiet: bool = False, match: str = None):
+    print(fs.list_py(path))

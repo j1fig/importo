@@ -1,5 +1,9 @@
 from . import utils
 
+from rich import print
+from rich.console import Console
+from rich.table import Table
+
 
 PROFILE_PREFIX = "import time:"
 SORT_INDEX = {
@@ -7,6 +11,13 @@ SORT_INDEX = {
     "self": 1,
     "name": 0,
 }
+
+# Switching to stderr for the time being.
+# Formatting for piping/output to other tools is
+# still under definition.
+# So for now we'll focus on the best human interface
+# and then boil down the machine-useful bits to stdout .
+console = Console(stderr=True)
 
 
 def parse(profiles):
@@ -54,6 +65,7 @@ def view(stats, depth, match, sort, quiet):
             continue
         ordered.append((s, stats[s]["self_p99"], stats[s]["cumulative_p99"]))
     ordered = sorted(ordered, key=lambda t: t[SORT_INDEX[sort]], reverse=True)
-    print("cum\tself\timport")
+    table = Table("cumulative", "self", "import")
     for o in ordered:
-        print(f"{o[2]}\t{o[1]}\t{o[0]}")
+        table.add_row(o[2], o[1], o[0])
+    console.print(table)

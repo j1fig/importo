@@ -8,4 +8,4 @@ dist/
 .tox/
 .venv/
 
-secret.sh
+*.swp
