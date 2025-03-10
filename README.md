@@ -1,7 +1,7 @@
 importo
 =======
 
-Python import time profiler.
+A Python import profiler.
 
 
 ## Installing
