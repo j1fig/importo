@@ -28,5 +28,8 @@ def main(
     if not quiet:
         print(f"Found {len(py_files)} Python files.")
 
-    for f in py_files:
-        print(tree.parse_imports(f))
+    imports = {
+        f: tree.parse_imports(f)
+        for f in py_files
+    }
+    print(imports)

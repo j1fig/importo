@@ -7,7 +7,7 @@ name = "importo"
 version = "0.3.0"
 description = "Python import time profiler."
 readme = "README.md"
-requires-python = ">=3.9"
+requires-python = ">=3.10"
 dependencies = [
     "typer>=0.15.2",
     "typing-extensions>=4.12.2",
